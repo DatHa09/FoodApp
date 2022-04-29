@@ -1,12 +1,24 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import MapView from 'react-native-maps';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus, faMinus, faStar} from '@fortawesome/free-solid-svg-icons';
-import {styles} from './style/MapScreenStyle'
+import {styles} from './style/MapScreenStyle';
 
 import {colors} from '../../assets/data/foodAppData';
 
 export default function MapScreen({route}) {
+  const [region, setRegion] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
+  const onRegionChangeComplete = region => {
+    setRegion(region);
+  };
+  console.log(region);
   return (
     <View style={styles.root}>
       {/* address bar */}
@@ -90,6 +102,16 @@ export default function MapScreen({route}) {
           </View>
         </View>
       </View>
+      <MapView
+        region={region}
+        onRegionChangeComplete={onRegionChangeComplete}
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+        }}
+      />
     </View>
   );
 }

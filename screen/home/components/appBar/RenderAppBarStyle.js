@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: Platform.OS == 'ios' ? 64 : 0,
-    height: Platform.OS == 'ios' ? 100 : 56,
+    paddingVertical: Platform.OS == 'ios' ? 64 : 5,
+    // height: Platform.OS == 'ios' ? 100 : 56,
     marginTop: 5,
   },
   appBar_text: {

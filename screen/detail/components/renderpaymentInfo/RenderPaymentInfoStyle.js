@@ -3,7 +3,7 @@ import {colors} from '../../../../assets/data/foodAppData';
 
 export const styles = StyleSheet.create({
   root: {
-    // flex: 1,
+    flex: 2,
     backgroundColor: colors.backgroundColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -58,10 +58,10 @@ export const styles = StyleSheet.create({
 
   container_order: {
     backgroundColor: colors.primary,
-    padding: 15,
+    padding: 10,
     borderRadius: 15,
     alignItems: 'center',
-    marginBottom: 15,
+    // marginBottom: 15
   },
   container_order__content: {
     color: colors.backgroundColor,

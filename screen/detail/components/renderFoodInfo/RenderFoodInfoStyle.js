@@ -3,17 +3,18 @@ import {colors} from '../../../../assets/data/foodAppData';
 
 export const styles = StyleSheet.create({
   root: {
-    // flex: 4,
+    flex: 7,
+    // backgroundColor: colors.secondary
   },
   container_photo: {
-    width: '100%',
+    // width: '100%',
     alignItems: 'center',
-    marginTop: 30,
-    marginBottom: 30,
+    marginTop: 10,
+    marginBottom: 10,
   },
   container_photo__image: {
-    width: 240,
-    height: 240,
+    width: 230,
+    height: 230,
     borderRadius: 999,
   },
   container_photo_container_qty: {
@@ -40,6 +41,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 30,
+    marginTop: 10,
   },
 
   container_info_title: {
@@ -65,7 +67,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: 10,
   },
   container_calories__image: {
     width: 22,
@@ -82,7 +84,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 30,
+    marginVertical: 6,
   },
   marginRight10: {
     marginRight: 10,

@@ -406,7 +406,7 @@ export const foodsData = [
     name: 'Paella Verdura',
     photo: require('../images/paella-verdura.jpg'),
     description:
-      'This veggie-packed paella comes together in under an hour, and, even better, most of the cooking happens in the oven.',
+      'This veggie-packed paella comes together in under an hour, and, even better.',
     calories: 370,
     price: 9.99,
     qty: 40,

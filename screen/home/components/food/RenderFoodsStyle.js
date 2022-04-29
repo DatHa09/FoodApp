@@ -1,7 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {colors} from '../../../../assets/data/foodAppData';
 const textSize = 18;
-const restaurantName = 28;
+const restaurantName = 23;
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -9,11 +9,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    width: Math.round(Dimensions.get('window').width) - 25,
+    width: Math.round(Dimensions.get('window').width)- 25,
     // elevation: 100,
   },
   image: {
-    width: Math.round(Dimensions.get('window').width) - 25,
+    width: Math.round(Dimensions.get('window').width)- 25,
     height: 180,
     borderRadius: 30,
   },
