@@ -26,7 +26,6 @@ export default function DetailScreen({navigation, route}) {
   };
 
   const onPressOrderButton = () => {
-    console.log('onPressOrderButton');
     navigation.navigate(mapName, {
       foodName: route.params.food.name,
       rating: route.params.food.rating,
@@ -38,7 +37,6 @@ export default function DetailScreen({navigation, route}) {
       <RenderAppBar
         screenName={detailName}
         navigation={navigation}
-        route={route}
       />
       {/* {renderFoodInfo()} */}
       <RenderFoodInfo

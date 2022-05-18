@@ -1,7 +1,7 @@
 import {View, Text, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 
-import {detailName, homeName} from '../../assets/data/foodAppData';
+import {detailName, foodsData, homeName} from '../../assets/data/foodAppData';
 
 import RenderAppBar from './components/appBar/RenderAppBar';
 import RenderCategories from './components/category/RenderCategories';
@@ -16,29 +16,28 @@ export default function HomeScreen({navigation, route}) {
       food: food,
     });
   };
+  let data = foodsData.filter(item => item.categories === categoryIdSelected)
+  
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <RenderAppBar
-          screenName={homeName}
-          navigation={navigation}
-          route={route}
-        />
-        {/* {renderAppBar()} */}
-        <View style={styles.container_title}>
-          <Text style={styles.container_title__content}>Main</Text>
-          <Text style={styles.container_title__content}>Categories</Text>
-        </View>
-        <RenderCategories
-          categoryIdSelected={categoryIdSelected}
-          setCategoryIdSelected={setCategoryIdSelected}
-        />
-        <RenderFoods
-          categoryIdSelected={categoryIdSelected}
-          onPressFoods={onPressFoods}
-        />
+    <View style={styles.root}>
+      <RenderAppBar
+        screenName={homeName}
+        navigation={navigation}
+        route={route}
+      />
+      <View style={styles.container_title}>
+        <Text style={styles.container_title__content}>Main</Text>
+        <Text style={styles.container_title__content}>Categories</Text>
       </View>
-    </ScrollView>
+      <RenderCategories
+        categoryIdSelected={categoryIdSelected}
+        setCategoryIdSelected={setCategoryIdSelected}
+      />
+      <RenderFoods
+        data={data}
+        onPressFoods={onPressFoods}
+      />
+    </View>
   );
 }

@@ -3,14 +3,14 @@ import {colors} from '../../../../assets/data/foodAppData';
 
 export const styles = StyleSheet.create({
   root: {
-    flex: 7,
+    flex: 3,
     // backgroundColor: colors.secondary
   },
   container_photo: {
     // width: '100%',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 16,
+    marginBottom: 16,
   },
   container_photo__image: {
     width: 230,
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     marginRight: 20,
     color: colors.textColor,
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-Bold'
   },
 
   container_info: {
@@ -54,12 +54,13 @@ export const styles = StyleSheet.create({
   container_info_title__content: {
     textAlign: 'center',
     color: colors.textColor,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-Bold',
     fontSize: 24,
   },
   container_info__descriptions: {
+    fontFamily: 'Quicksand-Medium',
     textAlign: 'center',
-    color: colors.textColor,
+    color: colors.darkgray,
     fontSize: 18,
   },
 
@@ -76,8 +77,8 @@ export const styles = StyleSheet.create({
   },
   container_calories__calories: {
     fontSize: 18,
-    color: colors.secondary,
-    fontWeight: 'bold',
+    color: colors.darkgray,
+    fontFamily: 'Quicksand-Medium',
   },
 
   container_slide_show: {

@@ -1,22 +1,20 @@
-import {View, Text, Image} from 'react-native';
-import React, {useState} from 'react';
+import 'react-native-gesture-handler';
+import {StatusBar} from 'react-native';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import HomeScreenBottomTab from './screen/HomeScreenBottomTab';
-import HomeScreen from './screen/home/HomeScreen';
 import CartScreen from './screen/cart/CartScreen';
 import DetailScreen from './screen/detail/DetailScreen';
 import MapScreen from './screen/map/MapScreen';
-import FavoriteScreen from './screen/favorite/FavoriteScreen';
-import SearchScreen from './screen/search/SearchScreen';
-import ProfileScreen from './screen/profile/ProfileScreen';
 
 import {
   homeBottomTabName,
   detailName,
   mapName,
   cartName,
+  colors,
 } from './assets/data/foodAppData';
 
 const Stack = createNativeStackNavigator();
@@ -24,9 +22,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-      // initialRouteName={homeName}
-      >
+      <StatusBar backgroundColor={colors.primary} />
+      <Stack.Navigator>
         <Stack.Screen
           name={homeBottomTabName}
           options={{headerShown: false}}
@@ -36,7 +33,7 @@ export default function App() {
           name={detailName}
           component={DetailScreen}
           options={({route}) => ({
-            title: route.params.food.name,
+            // title: route.params.food.name,
             headerShown: false,
           })}
         />

@@ -28,8 +28,8 @@ export const styles = StyleSheet.create({
     marginRight: 10,
   },
   content: {
-    color: colors.textColor,
-    fontWeight: 'bold',
+    color: colors.black,
+    fontFamily: 'Quicksand-SemiBold',
     fontSize: 16,
   },
 
@@ -101,24 +101,24 @@ export const styles = StyleSheet.create({
   btn_message: {
     backgroundColor: colors.secondary_2,
   },
-  
+
   btn_call__content: {
     color: colors.backgroundColor,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-Bold',
   },
   btn_message__content: {
     color: colors.textColor,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-Bold',
   },
 
   text: {
     color: colors.textColor,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-Bold',
     fontSize: 20,
   },
   text_2: {
     color: colors.secondary,
-    fontWeight: 'bold',
+    fontFamily: 'Quicksand-SemiBold',
     fontSize: 14,
   },
 

@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   container_image: {
-    backgroundColor: colors.backgroundColor,
+    backgroundColor: colors.lightGray4,
     padding: 15,
     borderRadius: 99,
     marginBottom: 10,
@@ -28,8 +28,9 @@ export const styles = StyleSheet.create({
     width: 25,
   },
   container__text: {
+    fontFamily: 'Quicksand-SemiBold',
     fontSize: 16,
-    color: colors.textColor,
+    color: colors.black,
     // fontWeight: 'bold',
   },
 });

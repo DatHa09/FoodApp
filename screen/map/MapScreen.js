@@ -1,26 +1,105 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import React, {useState} from 'react';
-import MapView from 'react-native-maps';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Linking,
+} from 'react-native';
+import React, {useRef, useEffect} from 'react';
+
+import MapView, {PROVIDER_GOOGLE, Marker, Polyline} from 'react-native-maps';
+import decodePolyline from 'decode-google-map-polyline';
+
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus, faMinus, faStar} from '@fortawesome/free-solid-svg-icons';
+
 import {styles} from './style/MapScreenStyle';
 
 import {colors} from '../../assets/data/foodAppData';
 
 export default function MapScreen({route}) {
-  const [region, setRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+  const distance = 124.8; //KM
+  const newDistance = distance / 2;
+
+  const latitude = 10.764909;
+  const longitude = 106.6534265;
+
+  const latitudeEnd = 10.767117;
+  const longitudeEnd = 106.6507593;
+
+  let latitudeDelta;
+  let longitudeDelta;
+
+  const calculateLatNLongDelta = latitude => {
+    const circumference = 40075;
+
+    const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
+
+    const angularDistance = newDistance / circumference;
+
+    latitudeDelta = newDistance / oneDegreeOfLatitudeInMeters;
+    longitudeDelta = Math.abs(
+      Math.atan2(
+        Math.sin(angularDistance) * Math.cos(latitude),
+        Math.cos(angularDistance) - Math.sin(latitude) * Math.sin(latitude),
+      ),
+    );
+  };
+
+  const mapRef = useRef();
+
+  const iconCar = require('../../assets/icons/location/iconCar.png');
+
+  let points =
+    'gou`Aux}iSoAUGCW[iAcBKOaAj@{DdCiCxAiEvB_@VGHMb@?ROV?PNRRFDAj@r@b@h@lBbDjAJf@NLDFg@AGAO?M';
+
+  calculateLatNLongDelta(latitude);
+  const coordinator = {
+    latitude,
+    longitude,
+    latitudeDelta,
+    longitudeDelta,
+  };
+
+  calculateLatNLongDelta(latitudeEnd);
+  const endCoordinator = {
+    latitude: latitudeEnd,
+    longitude: longitudeEnd,
+    latitudeDelta,
+    longitudeDelta,
+  };
+
+  useEffect(() => {
+    mapRef.current.animateToRegion(coordinator, 1000);
   });
 
-  const onRegionChangeComplete = region => {
-    setRegion(region);
+  let newCoord = decodePolyline(points).map((value, index) => ({
+    latitude: value.lat,
+    longitude: value.lng,
+  }));
+
+  const onPressCallButton = () => {
+    Linking.openURL(`tel:0774865589`);
   };
-  console.log(region);
+
   return (
     <View style={styles.root}>
+      <MapView
+        ref={mapRef}
+        style={StyleSheet.absoluteFillObject}
+        provider={PROVIDER_GOOGLE}
+        // zoomControlEnabled
+        zoomEnabled
+        maxZoomLevel={20} //max 20
+        minZoomLevel={2}>
+        <Polyline coordinates={newCoord} strokeColor={'red'} strokeWidth={3} />
+
+        <Marker coordinate={coordinator}>
+          <Image style={{width: 42, height: 42}} source={iconCar} />
+        </Marker>
+        <Marker coordinate={endCoordinator} />
+      </MapView>
       {/* address bar */}
       <View style={styles.container_address_bar}>
         {/* address */}
@@ -92,6 +171,7 @@ export default function MapScreen({route}) {
           {/* button */}
           <View style={styles.container_contact}>
             <TouchableOpacity
+              onPress={onPressCallButton}
               style={[styles.marginRight10, styles.btn, styles.btn_call]}>
               <Text style={styles.btn_call__content}>Call</Text>
             </TouchableOpacity>
@@ -102,16 +182,6 @@ export default function MapScreen({route}) {
           </View>
         </View>
       </View>
-      <MapView
-        region={region}
-        onRegionChangeComplete={onRegionChangeComplete}
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-        }}
-      />
     </View>
   );
 }

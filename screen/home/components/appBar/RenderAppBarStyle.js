@@ -17,8 +17,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.secondary_2,
   },
   appBar_text__content: {
+    fontFamily: 'Quicksand-Bold',
     fontSize: 20,
-    fontWeight: 'bold',
-    color: colors.textColor,
+    color: colors.black,
   },
 });

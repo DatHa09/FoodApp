@@ -13,8 +13,9 @@ import {
   homeName,
   detailName,
   cartName,
+  mapName,
 } from '../../../../assets/data/foodAppData';
-export default function RenderAppBar({screenName, navigation, route}) {
+export default function RenderAppBar({screenName, navigation}) {
   const onPressCart = () => {
     navigation.navigate(cartName);
   };
